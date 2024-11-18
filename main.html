@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alata&family=Red+Hat+Text:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    <link href="./output.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Main div -->
+    <div class="bg-hero-pattern min-h-screen bg-veryDarkBlue flex flex-col justify-between">
+        <!-- sub div 1 -->
+        <div class="text-center p-10 m-5">
+            <h1  id ="launch" class="text-white text-md">WE'RE LAUNCHING SOON</h1>
+        </div>
+        <!-- sub div 2 -->
+        <div class="flex items-center justify-center space-x-10">
+            <div class="flex flex-col items-center space-y-4">
+                <div id ="dayDiv" class="w-36 h-36 bg-darkDesaturatedBlue flex items-center justify-center text-softRed rounded-sm shadow-md text-xl font-bold">00</div>
+                <h3 class="text-grayishBlue font-bold text-sm">DAYS</h3>
+            </div>
+            <div class="flex flex-col items-center space-y-4">
+                <div id= "hourDiv" class="w-36 h-36 bg-darkDesaturatedBlue flex items-center justify-center text-softRed rounded-sm shadow-md text-xl font-bold">00</div>
+                <h3 class="text-grayishBlue font-bold text-sm">HOURS</h3>
+            </div>
+            <div class="flex flex-col items-center space-y-4">
+                <div id="minuteDiv" class="w-36 h-36 bg-darkDesaturatedBlue flex items-center justify-center text-softRed rounded-sm shadow-md text-xl font-bold">01</div>
+                <h3 class="text-grayishBlue font-bold text-sm">MINUTES</h3>
+            </div>
+            <div class="flex flex-col items-center space-y-4">
+                <div id="secondDiv" class="w-36 h-36 bg-darkDesaturatedBlue flex items-center justify-center text-softRed rounded-sm shadow-md text-xl font-bold">00</div>
+                <h3 class="text-grayishBlue font-bold text-sm">SECONDS</h3>
+            </div>
+        </div>
+        <!-- sub div 3 -->
+        <div class="bg-pattern-hills bg-cover bg-center h-60 relative">
+            <div class="flex flex-row items-center justify-center space-x-5 h-full">
+                <img src="/images/icon-facebook.svg" alt="Facebook">
+                <img src="/images/icon-pinterest.svg" alt="Pinterest">
+                <img src="/images/icon-instagram.svg" alt="Instagram">
+            </div>
+        </div>
+        
+    </div>
+</body>
+</html>
+<script>
+    // get references to the countdown elements
+    let launchText = document.getElementById("launch");
+    let DayCount = document.getElementById("dayDiv") ;
+    let hourCount = document.getElementById("hourDiv");
+    let minuteCount = document.getElementById("minuteDiv");
+    let secondCount = document.getElementById("secondDiv");
+
+    // Initialize the values 
+    let days = document.getElementById("dayDiv").innerText;
+    let hours =document.getElementById("hourDiv").innerText;
+    let minutes = document.getElementById("minuteDiv").innerText;
+    let seconds = document.getElementById("secondDiv").innerText;
+
+    //update the count down every second
+    const countDownInterval = setInterval(()=>{
+        if (seconds > 0){
+            seconds--;
+        }
+        else if(minutes > 0){
+            minutes--;
+            seconds = 59;
+        }
+        else if (hours > 0){
+            hours--;
+            minutes = 59;
+            seconds = 59;
+        }
+        else if (days > 0){
+            days--;
+            hours = 23;
+            minutes = 59;
+            seconds = 59;
+        }
+        else {
+            clearInterval(countDownInterval);
+            launchText.innerText = " ";
+            launchText. innerText = "Hurrayyyy!!!! The Launch is Completed"
+            return;
+        }
+
+        //update the DOM with new values
+        dayDiv.textContent = days.toString().padStart(2,'0');
+        hourDiv.textContent = hours.toString().padStart(2,'0');
+        minuteDiv.textContent = minutes.toString().padStart(2, '0');
+        secondDiv.textContent = seconds.toString().padStart(2, '0');
+
+    },1000) 
+
+    
+    
+
+
+    </script>
